@@ -23,11 +23,9 @@ const db = openDb();
 // Example route to fetch highlights
 app.get('/highlights', (req, res) => {
   try {
-    // const query = `SELECT * FROM Bookmarks`; // Replace 'highlights' with your table name
-    // const highlights = db.prepare(query).all();
-    const allRows = db.prepare('SELECT * FROM Bookmarks').all();
-    console.log("🚀 ~ app.get ~ allRows:", allRows)
-    res.json(allRows);
+    const query = `SELECT * FROM Bookmarks`;
+    const highlights = db.prepare(query).all();
+    res.json(highlights);
   } catch (err) {
     // console.error('Error fetching highlights:', err.message);
     res.status(500).json({ error: 'Failed to fetch highlights' });
