@@ -1,0 +1,1 @@
+KOBO_FILE_PATH="/Volumes/KOBOeReader/.kobo/KoboReader.sqlite"
