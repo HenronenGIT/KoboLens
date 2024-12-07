@@ -1,37 +1,36 @@
-import Database from 'better-sqlite3';
+import cors from 'cors';
 import express from 'express';
+import morgan from 'morgan';
+import { errorHandler } from './src/middleware/errorHandler';
+import bookmarkRoutes from './src/routes/bookmark.routes';
+import rootRouter from './src/routes/root.routes';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-// Open the database synchronously
-const openDb = () => {
-  try {
-    const db = new Database('src/data/KoboReader.sqlite', { verbose: console.log });
+// Enable CORS
+app.use(cors());
 
-    console.log('Database connection established.');
-    return db;
-  } catch (err) {
-    // console.error('Failed to open database:', err.message);
-    throw err;
-  }
-};
+// Use morgan for logging
+app.use(morgan('tiny'));
 
-// Use the database
-const db = openDb();
+// Middleware to parse JSON
+app.use(express.json());
 
-// Example route to fetch highlights
-app.get('/highlights', (req, res) => {
-  try {
-    const query = `SELECT * FROM Bookmarks`;
-    const highlights = db.prepare(query).all();
-    res.json(highlights);
-  } catch (err) {
-    // console.error('Error fetching highlights:', err.message);
-    res.status(500).json({ error: 'Failed to fetch highlights' });
-  }
+// Use the bookmark routes
+app.use('/api', rootRouter);
+
+app.use('/bookmarks', bookmarkRoutes);
+
+// Use the error handling middleware
+app.use(errorHandler);
+
+// Catch-all route for unmatched endpoints
+app.use((req, res) => {
+  res.status(404).send('Endpoint not found');
 });
 
+// Start the server
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
