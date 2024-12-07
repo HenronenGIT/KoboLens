@@ -6,7 +6,9 @@
     "server"
   ],
   "scripts": {
-    "dev": "turbo dev"
+    "dev": "turbo dev",
+    "dev:server": "turbo run dev --filter=server",
+    "dev:client": "turbo run dev --filter=client"
   },
   "devDependencies": {
     "turbo": "^1.0.0"

@@ -4,10 +4,10 @@ import { TBookmark } from '../types/Bookmark.types';
 const router = express.Router();
 
 // Middleware for logging requests
-router.use((req: Request, res: Response, next: NextFunction) => {
-    console.log(`${req.method} ${req.path}`);
-    next();
-});
+// router.use((req: Request, res: Response, next: NextFunction) => {
+//     console.log(`${req.method} ${req.path}`);
+//     next();
+// });
 
 // Example route handler
 router.get('/', async (req: Request, res: Response) => {

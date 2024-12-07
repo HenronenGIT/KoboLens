@@ -1,5 +1,5 @@
 {
-  "name": "kobolens-client",
+  "name": "client",
   "private": true,
   "version": "0.0.0",
   "type": "module",

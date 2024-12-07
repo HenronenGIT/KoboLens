@@ -42,7 +42,7 @@ Ready to jump in? Make sure you have Yarn installed, then run these commands to 
    ```bash
    yarn install
    ```
-
+    
 ### Running the Project
 
 To start the development servers for both the client and server, make sure you are in the root directory of the project and run:
