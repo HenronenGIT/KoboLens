@@ -5,6 +5,9 @@
     "client",
     "server"
   ],
+  "scripts": {
+    "dev": "turbo dev"
+  },
   "devDependencies": {
     "turbo": "^1.0.0"
   }

@@ -29,3 +29,23 @@ In a world where bookmarks are scattered across devices and browsers, Kobolens i
 ## 🚀 Getting Started
 
 Ready to jump in? Make sure you have Yarn installed, then run these commands to get started:
+
+### Installation
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/kobolens.git
+   cd kobolens
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   yarn install
+   ```
+
+### Running the Project
+
+To start the development servers for both the client and server, make sure you are in the root directory of the project and run:
+```bash
+yarn dev
+```
