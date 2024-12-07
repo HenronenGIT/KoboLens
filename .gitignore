@@ -34,3 +34,5 @@ roadmap.md
 
 # PNPM
 pnpm-lock.yaml
+
+yarn.lock
