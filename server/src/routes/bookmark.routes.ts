@@ -1,4 +1,5 @@
-import express, { Request, Response, NextFunction } from 'express';
+import express, { Request, Response } from 'express';
+import { BookmarkService } from '../services/bookmark.service';
 import { TBookmark } from '../types/Bookmark.types';
 
 const router = express.Router();
@@ -12,8 +13,9 @@ const router = express.Router();
 // Example route handler
 router.get('/', async (req: Request, res: Response) => {
     try {
-        // Fetch bookmarks logic here
-        const bookmarks: TBookmark[] = []; // Replace with actual data fetching
+        const bookmarkService = new BookmarkService();
+        const bookmarks: TBookmark[] = await bookmarkService.getAllBookmarks();
+
         res.status(200).json(bookmarks);
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
